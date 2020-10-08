@@ -1,0 +1,1 @@
+﻿smtpservname;587;konkurs@powiat.poznan.pl;haslo;starostwo@powiat.poznan.pl;konfiguracja.txt
