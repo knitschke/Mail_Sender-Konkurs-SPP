@@ -4,10 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mail_Sender_Konkurs
 {
@@ -16,7 +12,7 @@ namespace Mail_Sender_Konkurs
         //
         protected static void Write_to_file()
         {
-            string email, pw, port = "587", smtpserv, emailto;
+            string email, pw, port, smtpserv, emailto;
             Console.WriteLine("SmtpServer:");
             smtpserv = Console.ReadLine();
             Console.WriteLine("Port:");
@@ -44,20 +40,18 @@ namespace Mail_Sender_Konkurs
         static void send_and_delete(ref List<string> readfile)
         {
             int mail_number = 0;
-            List<string> to_delete = new List<string>();
             string[] fileEntries = Directory.GetFiles("../");
-            MailMessage mail = new MailMessage();
+            
             foreach (string fileName in fileEntries)
             {
+                MailMessage mail = new MailMessage();
                 if (fileName.Split('_').Count() > 2)
                 {
                     readfile[5] = $"{fileName}";
-
-
                     SmtpClient SmtpServer = new SmtpClient(readfile[0]);
                     mail.From = new MailAddress(readfile[2]);
                     mail.To.Add(readfile[4]);
-                    mail.Subject = $"{fileName.Split('_')[1]} - konkurs - czujka tlenku węgla";
+                    mail.Subject = $"{fileName.Split('_')[1]} - Konkurs - \"Czujka tlenku węgla może uratować Twoje życie\"";
                     mail.Body = "Pdf z ankietą w załączniku.";
 
                     Attachment attachment;
@@ -71,37 +65,21 @@ namespace Mail_Sender_Konkurs
                     SmtpServer.Send(mail);
                     mail_number++;
                     Console.WriteLine("Mail wysłany - " + fileName.Split('_')[1]);
-
-                    to_delete.Add(fileName);
+                    mail.Attachments[0].Dispose();
+                    mail.Attachments.Clear();
+                    mail.Dispose();
+                    mail = null;
+                    File.Delete(fileName);
+                    Console.WriteLine($"Plik usunięty - {fileName}");
                 }
+                
             }
             Console.WriteLine($"Wysłano {mail_number} maili");
-            //deleting sent files
-            if (mail.Attachments != null)
-            {
-                for (Int32 I = mail.Attachments.Count - 1; I >= 0; I--)
-                {
-                    mail.Attachments[I].Dispose();
-                }
-                mail.Attachments.Clear();
-                mail.Attachments.Dispose();
-            }
-            mail.Dispose();
-            mail = null;
-            foreach (var item in to_delete)
-            {
-                File.Delete(item);
-                Console.WriteLine($"Plik usunięty - {item}");
-            }
+            
         }
 
         static void Main(string[] args)
         {
-            //File.Create("data");
-            //File.Create(@"data.txt");
-            //string file_path = "data";
-            //if (!File.Exists(file_path))
-            //    File.Create("data.txt");
 
             while (true)
             {
@@ -136,7 +114,7 @@ namespace Mail_Sender_Konkurs
                             break;
                     }
                 }
-            }//0smtpserver;1port;2email-from;3password;4email-to;5path-to-attachments
+            }
 
         }
     }

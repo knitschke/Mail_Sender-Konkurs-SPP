@@ -1,7 +1,0 @@
-C:\Users\krzysztof.nitschke\source\repos\Mail-Sender-Konkurs\Mail-Sender-Konkurs\bin\Release\konfiguracja.txt
-C:\Users\krzysztof.nitschke\source\repos\Mail-Sender-Konkurs\Mail-Sender-Konkurs\bin\Release\Mail-Sender-Konkurs.exe.config
-C:\Users\krzysztof.nitschke\source\repos\Mail-Sender-Konkurs\Mail-Sender-Konkurs\bin\Release\Mail-Sender-Konkurs.exe
-C:\Users\krzysztof.nitschke\source\repos\Mail-Sender-Konkurs\Mail-Sender-Konkurs\bin\Release\Mail-Sender-Konkurs.pdb
-C:\Users\krzysztof.nitschke\source\repos\Mail-Sender-Konkurs\Mail-Sender-Konkurs\obj\Release\Mail-Sender-Konkurs.csproj.CoreCompileInputs.cache
-C:\Users\krzysztof.nitschke\source\repos\Mail-Sender-Konkurs\Mail-Sender-Konkurs\obj\Release\Mail-Sender-Konkurs.exe
-C:\Users\krzysztof.nitschke\source\repos\Mail-Sender-Konkurs\Mail-Sender-Konkurs\obj\Release\Mail-Sender-Konkurs.pdb
